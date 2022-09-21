@@ -3,6 +3,7 @@ package EstanisADD;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Iterator;
 
 public class ej7 {
 
@@ -10,38 +11,22 @@ public class ej7 {
 		// TODO Auto-generated method stub
 
 		String directorio = args[0];
-		String extension;
-
-		if (args.length <= 1) {
-			extension = null;
-		} else {
-			extension = args[1];
-		}
-
-		//Este es el directorio que recorremos, le pasamos la ruta a dir
-		//luegos hacemos un string de listaarchivos que es un string de todo lo que tenemos en nuestra ruta
-		//lo recorremos con un for y nos visualiza todo lo que tenemos
 		File dir = new File(directorio);
-		String[] listaArchivos = dir.list();
+		// Definimos el numero de extensiones que tiene, le quitamos 1 ya que el primero
+		// no lo contamos, es la ruta
+		int extensiones = args.length - 1;
 
-		
-		for (int i = 0; i < listaArchivos.length; i++) {
+		for (int i = 0; i <= extensiones; i++) {
+			// Usamos la clase FilterExtension la cual le pasamos el argumento que queramos
+			FilterExtension filtro = new FilterExtension(args[i]);
+			// Con este string hacemos un array de string de archivos que contegan esta
+			// extension
+			String[] listaArchivos = dir.list(filtro);
 
-			if (extension == null) {
+			for (int j = 0; j < listaArchivos.length; j++) {
 				System.out.println(listaArchivos[i]);
-				
-			} else {
-				//Comprobacion de listaarchivos que son todos los ficheros de nuestro directorio, usamos .endsWidth 
-				//Si tiene extension nos pondra todos los ficheros con dicha extension
-				if (listaArchivos[i].endsWith(args[i])) {
-					System.out.println(listaArchivos[i]);
-				}
 			}
-
 		}
-		
-		
-		
 
 	}
 
