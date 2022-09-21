@@ -4,8 +4,7 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-
-public class ej6 {
+public class ej7 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -34,7 +33,7 @@ public class ej6 {
 			} else {
 				//Comprobacion de listaarchivos que son todos los ficheros de nuestro directorio, usamos .endsWidth 
 				//Si tiene extension nos pondra todos los ficheros con dicha extension
-				if (listaArchivos[i].endsWith(extension)) {
+				if (listaArchivos[i].endsWith(args[i])) {
 					System.out.println(listaArchivos[i]);
 				}
 			}
